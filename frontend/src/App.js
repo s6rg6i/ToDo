@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import UserList from './components/userlist.js'
 import Header from './components/header.js'
 import Footer from './components/footer.js'
@@ -7,12 +8,24 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            'users': [
-                {"username": "ivan99", "first_name": "Иван", "last_name": "Иванов", "email": "ivan99@mail.ru"},
-                {"username": "alla789","first_name": "Алла","last_name": "Пугачева","email": "alla789@mail.ru"}
-            ]
+            'users': []
         }
     }
+
+    componentDidMount() {
+        axios
+        .get('http://127.0.0.1:8000/api/users/')
+        .then(response => {
+            const users = response.data
+            this.setState(
+                {
+                    'users': users
+                }
+            )
+        })
+        .catch(error => console.log(error))
+    }
+
     render() {
         return (
             <main role="main">
