@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import UserList from './components/userlist.js'
+import Header from './components/header.js'
+import Footer from './components/footer.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            'users': [
+                {"username": "ivan99", "first_name": "Иван", "last_name": "Иванов", "email": "ivan99@mail.ru"},
+                {"username": "alla789","first_name": "Алла","last_name": "Пугачева","email": "alla789@mail.ru"}
+            ]
+        }
+    }
+    render() {
+        return (
+            <main role="main">
+                <Header />
+                <div className="container">
+                    <UserList users={this.state.users} />
+                </div>
+                <Footer />
+            </main>
+        )
+    }
 }
 
 export default App;
