@@ -9,4 +9,5 @@ class ProjectModelSerializer(ModelSerializer):
 class ToDoModelSerializer(ModelSerializer):
     class Meta:
         model = ToDo
-        fields = '__all__'
+        fields = ['text', 'is_active', 'project', 'author', 'created_at',]
+

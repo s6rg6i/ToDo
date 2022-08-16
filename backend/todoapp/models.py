@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 from users.models import CustomUser
 
 class Project(models.Model):
@@ -11,8 +12,8 @@ class Project(models.Model):
 
 class ToDo(models.Model):
     text = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(default=now)  # auto_now_add=True - в adminPanel нет 
+    modified_at = models.DateTimeField(default=now)
     is_active = models.BooleanField(default=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
