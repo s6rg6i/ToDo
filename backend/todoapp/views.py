@@ -12,7 +12,7 @@ class ProjectModelViewSet(ModelViewSet):
 
     queryset = Project.objects.all()
     serializer_class = ProjectModelSerializer
-    pagination_class = Paginator
+    # pagination_class = Paginator
     filterset_fields = ['title']  # 2-й выриант через фильтр
 
     # 1-й выриант через кварисет get_queryset
@@ -29,7 +29,7 @@ class ToDoModelViewSet(ModelViewSet):
 
     queryset = ToDo.objects.all()
     serializer_class = ToDoModelSerializer
-    pagination_class = Paginator
+    # pagination_class = Paginator
     filterset_class = ToDoFilter  # 2-й выриант через фильтр
 
     def perform_destroy(self, instance):
