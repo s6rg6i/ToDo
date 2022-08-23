@@ -1,42 +1,35 @@
 import React from 'react'
-import axios from 'axios'
-import UserList from './components/userlist.js'
-import Header from './components/header.js'
-import Footer from './components/footer.js'
+import './App.css';
+import Header from './components/Header';
+import UsersList from './components/UsersList.js'
+import ProjectsList from './components/ProjectsList.js'
+import ToDosList from './components/ToDosList.js'
+import ToDosFilter from './components/ToDosFilter';
+import NotFound404 from './components/NotFound404.js'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import Footer from './components/Footer';
 
-class App extends React.Component {
+export default class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            'users': []
+            debug: false,
         }
     }
-
-    componentDidMount() {
-        axios
-        .get('http://127.0.0.1:8000/api/users/')
-        .then(response => {
-            const users = response.data
-            this.setState(
-                {
-                    'users': users
-                }
-            )
-        })
-        .catch(error => console.log(error))
-    }
-
     render() {
         return (
-            <main role="main">
+            <BrowserRouter>
                 <Header />
-                <div className="container">
-                    <UserList users={this.state.users} />
-                </div>
+                <Routes>
+                    <Route exact path='/' element={<Navigate to='/users/' />} />
+                    <Route exact path='/users/' element={<UsersList debug={this.state.debug} />} />
+                    <Route exact path='/projects' element={<ProjectsList debug={this.state.debug} />} />
+                    <Route path='/projects/filter/:id' element={<ToDosFilter debug={this.state.debug} />} />
+                    <Route exact path='/todos' element={<ToDosList debug={this.state.debug} />} />
+                    <Route path='*' element={<NotFound404 />} />
+                </Routes>
                 <Footer />
-            </main>
+            </BrowserRouter>
         )
     }
 }
-
-export default App;
