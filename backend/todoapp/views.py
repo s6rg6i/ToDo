@@ -1,5 +1,8 @@
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import DjangoModelPermissions
+
+from todoapp.permissions import CustomProjectPermission
 
 from .filters import ToDoFilter
 from .models import Project, ToDo
@@ -12,6 +15,7 @@ class ProjectModelViewSet(ModelViewSet):
 
     queryset = Project.objects.all()
     serializer_class = ProjectModelSerializer
+    permission_classes = [CustomProjectPermission]
     # pagination_class = Paginator
     filterset_fields = ['title']  # 2-й выриант через фильтр
 
@@ -29,6 +33,7 @@ class ToDoModelViewSet(ModelViewSet):
 
     queryset = ToDo.objects.all()
     serializer_class = ToDoModelSerializer
+    permission_classes = [DjangoModelPermissions]
     # pagination_class = Paginator
     filterset_class = ToDoFilter  # 2-й выриант через фильтр
 
