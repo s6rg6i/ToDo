@@ -1,15 +1,23 @@
 import { Link } from 'react-router-dom'
 import './Header.css'
 
-const Header = () => {
-    return (
-        // <div>
-        <ul className='nav-ul'>
-            <li className='nav-li'><Link to='/users' className='nav-a'>Users</Link></li>
-            <li className='nav-li'><Link to='/projects' className='nav-a'>Projects</Link></li>
-            <li className='nav-li'><Link to='/todos' className='nav-a'>ToDos</Link></li>
-        </ul>
-        // </div >
-    )
+
+export const Header = ({ username }) => {
+  const [name, button] = (username) ? [username, '/logout'] : ['unregistered', '/login']
+  return (
+    <div className="topnav">
+      <Link to='/users'>Users</Link>
+      <Link to='/projects'>Projects</Link>
+      <Link to='/todo'>ToDo</Link>
+      <div className="login-container">
+        <Link className="button" to={button}>{button.substring(1)}</Link>
+        <label>{name}</label>
+      </div>
+    </div>
+  )
 }
-export default Header;
+
+export const Footer = () =>
+  <div className='footnav' >
+    Copiright &copy; ToDo
+  </div>

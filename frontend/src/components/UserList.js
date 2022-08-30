@@ -11,7 +11,7 @@ const UserItem = ({ user }) => {
   )
 }
 
-const UsersRepr = ({ users }) => {
+const UserList = ({ users }) => {
   return (
     <div className='cadre'>
       <table className='cadre-tbl'>
@@ -25,4 +25,4 @@ const UsersRepr = ({ users }) => {
   )
 }
 
-export default UsersRepr
+export default  UserList
