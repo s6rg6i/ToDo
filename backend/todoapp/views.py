@@ -15,7 +15,7 @@ class ProjectModelViewSet(ModelViewSet):
 
     queryset = Project.objects.all()
     serializer_class = ProjectModelSerializer
-    permission_classes = [CustomProjectPermission]
+    # permission_classes = [CustomProjectPermission]
     # pagination_class = Paginator
     filterset_fields = ['title']  # 2-й выриант через фильтр
 
@@ -33,7 +33,7 @@ class ToDoModelViewSet(ModelViewSet):
 
     queryset = ToDo.objects.all()
     serializer_class = ToDoModelSerializer
-    permission_classes = [DjangoModelPermissions]
+    # permission_classes = [DjangoModelPermissions]
     # pagination_class = Paginator
     filterset_class = ToDoFilter  # 2-й выриант через фильтр
 

@@ -16,7 +16,7 @@ class ProjectModelSerializer(ModelSerializer):
 
 
 class ToDoModelSerializer(ModelSerializer):
-    project = serializers.CharField(source='project.title')
+    # project = serializers.CharField(source='project.title')
     author = serializers.CharField(source='author.username')
 
     class Meta:

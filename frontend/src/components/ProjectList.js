@@ -4,14 +4,14 @@ import './Table.css'
 const ProjectItem = ({ project }) => {
   return (
     <tr>
-      <td className='cadre-td'><Link to={`filter/${project.id}`}>{project.title}</Link></td>
+      <td className='cadre-td'><Link to={`${project.id}`}>{project.title}</Link></td>
       <td className='cadre-td'>{project.repository_url}</td>
       <td className='cadre-td'>{project.users.join(', ')}</td>
     </tr>
   )
 }
 
-const ProjectsRepr = ({ projects }) => {
+const ProjectList = ({ projects }) => {
   return (
     <div className='cadre'>
       <table className='cadre-tbl'>
@@ -23,4 +23,5 @@ const ProjectsRepr = ({ projects }) => {
     </div>
   )
 }
-export default ProjectsRepr
+
+export default ProjectList

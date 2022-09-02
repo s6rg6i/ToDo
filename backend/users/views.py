@@ -11,4 +11,4 @@ from users.serializers import CustomUserModelSerializer
 class CustomUserModelViewSet(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, GenericViewSet):
     serializer_class = CustomUserModelSerializer
     queryset = CustomUser.objects.all()
-    permission_classes = [DjangoModelPermissions]
+    # permission_classes = [DjangoModelPermissions]
