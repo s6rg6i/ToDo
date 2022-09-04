@@ -2,7 +2,7 @@ import './Table.css'
 import { useParams } from 'react-router-dom'
 
 const ToDoItem = ({ todo, projects }) => {
-  const name = projects.find(el => el.id === todo.project).title  // Название проекта по id
+  const name = projects.find(el => el.id === todo.project).title  // Название проекта по id
   return (
     <tr>
       <td className='cadre-td'>{name}</td>
@@ -11,7 +11,6 @@ const ToDoItem = ({ todo, projects }) => {
     </tr>
   )
 }
-
 
 const ToDoFilter = ({ todos, projects }) => {
   const id = useParams().id
