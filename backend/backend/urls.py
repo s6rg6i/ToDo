@@ -19,6 +19,18 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 from todoapp.views import ProjectModelViewSet, ToDoModelViewSet
 from users.views import CustomUserModelViewSet
+from drf_yasg.views import get_schema_view
+from drf_yasg.openapi import Info, License, Contact
+
+schema_view = get_schema_view(
+    Info(
+        title='ToDo',
+        default_version='1.0',
+        description='description',
+        license=License(name='MIT'),
+        contact=Contact(email='test@yandex.ru')
+    )
+)
 
 router = DefaultRouter()
 router.register('users', CustomUserModelViewSet)
@@ -30,4 +42,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
     path('api-auth-token/', views.obtain_auth_token),
+    path('swagger/', schema_view.with_ui('swagger')),
+    path('redoc/', schema_view.with_ui('redoc')),
 ]
