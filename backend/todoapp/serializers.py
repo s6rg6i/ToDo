@@ -7,8 +7,8 @@ from .models import Project, ToDo
 
 class ProjectModelSerializer(ModelSerializer):
     # users = serializers.StringRelatedField(many=True)
-    users = serializers.SlugRelatedField(queryset=CustomUser.objects.all(), many=True, slug_field='last_name')
-    # users = serializers.PrimaryKeyRelatedField(queryset=CustomUser.objects.all(), many=True)
+    # users = serializers.SlugRelatedField(queryset=CustomUser.objects.all(), many=True, slug_field='last_name')
+    users = serializers.PrimaryKeyRelatedField(queryset=CustomUser.objects.all(), many=True)
 
     class Meta:
         model = Project

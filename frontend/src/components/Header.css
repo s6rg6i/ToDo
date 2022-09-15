@@ -1,85 +1,82 @@
-.topnav {
-  overflow: hidden;
-  background-color: #e9e9e9;
+ul {
+  margin: 0;
+  padding: 0;
 }
 
-.footnav {
+.foot {
   overflow: hidden;
   background-color: #e9e9e9;
-  padding: 14px;
+  height: 30px;
   text-align: center;
+  padding-top: 5px;
 }
 
-.topnav a {
+/* задаём высоту и ширину меню */
+ul.nav {
+  background: #e9e9e9;
+  height: 30px;
+  font-size: 17px;
+}
+
+/* Первый уровень вложенности */
+ul.nav li {
+  background: #b6b6b6;
+  border-right: 1px solid #FFFFFF;
   float: left;
+  /*делаем меню горизонтальным*/
+  height: 30px;
+  list-style: none;
+}
+
+/* Второй и последующие уровни вложенности */
+ul.nav li ul li {
+  border-bottom: 1px solid white;
+  height: auto;
+}
+
+/* Пункты меню */
+ul.nav li a {
+  text-decoration: none;
   display: block;
   color: white;
-  text-align: center;
-  padding: 14px 16px;
-  margin-left: 2px;
-  text-decoration: none;
-  font-size: 17px;
-  background-color: rgb(56, 61, 68);
+  width: 60px;
+  padding: 5px 5px 5px 15px;
 }
 
-.topnav a:hover {
-  background-color: rgb(81, 118, 134);
-  color: white;
+/* Скрываем вложенные пункты */
+ul.nav li ul {
+  display: none;
 }
 
-.topnav input[type=text] {
+ul.nav label {
   float: right;
-  padding: 6px;
-  margin-top: 8px;
-  margin-left: 3px;
-  font-size: 17px;
-  border: none;
-  width: 120px;
-  box-shadow: 0px 3px 0px 0px rgb(56 61 68 / 20%);
-  background-color: rgb(233, 235, 235)
+  margin-right: 20px;
+  box-shadow: 0px 3px 0px 0px lightblue;
 }
 
-.topnav label {
-  float: right;
-  padding: 6px;
-  margin-top: 8px;
-  margin-left: 3px;
-  font-size: 17px;
-  border: none;
-  box-shadow: 0px 3px 0px 0px rgb(56 61 68 / 20%);
-  background-color: rgb(233, 235, 235)
+/* Выпадающее меню */
+ul.nav li:hover {
+  background: rgb(237, 236, 236);
+  position: relative;
 }
 
-.topnav .login-container .button {
-  float: right;
-  padding: 14px 24px;
-  margin-top: 0px;
-  margin-left: 8px;
-  margin-right: 16px;
-  background-color: #555;
-  color: white;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
+ul.nav ul li:hover>a,
+ul.nav li:hover>a {
+  color: black;
 }
 
-.topnav .login-container button:hover {
-  background-color: rgb(81, 118, 134);
+/* 1-й уровень меню раскрывается вниз */
+ul.nav li:hover>ul {
+  border-top: 1px solid white;
+  display: block;
+  position: absolute;
+  top: 30px;
+  left: 0;
 }
 
-@media screen and (max-width: 600px) {
-  .topnav .login-container {
-    float: none;
-  }
-
-  .topnav a,
-  .topnav input[type=text],
-  .topnav .login-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
+/* 2-й и последующие уровни расскрываются вправо */
+ul.nav li:hover ul li ul {
+  position: absolute;
+  top: 0;
+  left: 150px;
 }
