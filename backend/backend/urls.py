@@ -21,6 +21,9 @@ from todoapp.views import ProjectModelViewSet, ToDoModelViewSet
 from users.views import CustomUserModelViewSet
 from drf_yasg.views import get_schema_view
 from drf_yasg.openapi import Info, License, Contact
+from django.views.decorators.csrf import csrf_exempt
+from graphene_django.views import GraphQLView
+
 
 schema_view = get_schema_view(
     Info(
@@ -44,4 +47,5 @@ urlpatterns = [
     path('api-auth-token/', views.obtain_auth_token),
     path('swagger/', schema_view.with_ui('swagger')),
     path('redoc/', schema_view.with_ui('redoc')),
+    path('graphql',GraphQLView.as_view(graphiql=True)),  # (graphiql=True) включить веб-интерфейс
 ]
