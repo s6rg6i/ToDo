@@ -47,5 +47,5 @@ urlpatterns = [
     path('api-auth-token/', views.obtain_auth_token),
     path('swagger/', schema_view.with_ui('swagger')),
     path('redoc/', schema_view.with_ui('redoc')),
-    path('graphql',GraphQLView.as_view(graphiql=True)),  # (graphiql=True) включить веб-интерфейс
+    path('graphql/',GraphQLView.as_view(graphiql=True)),  # (graphiql=True) включить веб-интерфейс
 ]
