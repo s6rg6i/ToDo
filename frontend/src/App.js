@@ -52,7 +52,7 @@ export default class App extends React.Component {
 	}
 
 	createToDo(text, proj_id, headers = this.getHeaders()) {
-		let author = this.state.users.find(a => a.username === this.state.username)  // зарегестрированный пользователь
+		let author = this.state.users.find(a => a.username === this.state.username)  // зарегестрированный пользователь
 		axios
 			.post('http://127.0.0.1:8000/api/todo/', { 'text': text, 'project': proj_id, 'author': author.id }, { headers })
 			.then(response => { this.loadData() })

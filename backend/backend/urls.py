@@ -23,6 +23,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg.openapi import Info, License, Contact
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
+from django.views.generic import TemplateView
 
 
 schema_view = get_schema_view(
@@ -48,4 +49,5 @@ urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger')),
     path('redoc/', schema_view.with_ui('redoc')),
     path('graphql/',GraphQLView.as_view(graphiql=True)),  # (graphiql=True) включить веб-интерфейс
+    path('',TemplateView.as_view(template_name='index.html'))
 ]
